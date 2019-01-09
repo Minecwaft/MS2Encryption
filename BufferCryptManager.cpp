@@ -5,13 +5,13 @@
 
 #define NUM_CRYPTERS 3
 
-BufferCryptManager::BufferCryptManager(int32_t version)
+BufferCryptManager::BufferCryptManager()
 {
 	this->crypters = new IBufferCrypter*[4];
 	this->crypters[0] = NULL;
-	this->crypters[(version + ENCRYPT_REARRANGE) % 3 + 1] = new CRearrangeCrypter();
-	this->crypters[(version + ENCRYPT_XOR) % 3 + 1] = new CXORCrypter();
-	this->crypters[(version + ENCRYPT_TABLE) % 3 + 1] = new CTableCrypter();
+	this->crypters[(MS2_VERSION + ENCRYPT_REARRANGE) % 3 + 1] = new CRearrangeCrypter();
+	this->crypters[(MS2_VERSION + ENCRYPT_XOR) % 3 + 1] = new CXORCrypter();
+	this->crypters[(MS2_VERSION + ENCRYPT_TABLE) % 3 + 1] = new CTableCrypter();
 	for (int32_t i = NUM_CRYPTERS; i > 0; --i)
 		this->crypters[i]->init();
 }

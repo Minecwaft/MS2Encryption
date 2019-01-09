@@ -16,7 +16,7 @@ public:
 	IBufferCrypter** crypters;
 	bool decrypt(uint8_t* buffer, int32_t length, int32_t seq_block, int32_t seq_recv);
 	int32_t encrypt(uint8_t* buffer, int32_t length, int32_t seq_block, int32_t seq_send);
-	BufferCryptManager(int32_t version);
+	BufferCryptManager();
 	~BufferCryptManager();
 };
 
